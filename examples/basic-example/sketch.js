@@ -132,7 +132,8 @@
  
 				// Render geometry
 				vertex_buffer.bind();
-				vertex_position.link_attrib(vertex_position, 2, gl.FLOAT, false, 0, 0);
+				const attribute_location = gl.getAttribLocation(currentProgram, "position");
+				vertex_position.link_attrib(attribute_location, 2, gl.FLOAT, false, 0, 0);
 				element_buffer.bind();
 				vertex_position.enable();
 				gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
