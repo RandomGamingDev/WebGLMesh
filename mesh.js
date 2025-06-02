@@ -23,7 +23,7 @@ Mesh.VAO = class {
   }
   
   unbind() {
-    this.gl.bindVertexArray(0);
+    this.gl.bindVertexArray(null);
   }
 }
 
@@ -41,6 +41,10 @@ Mesh.VBO = class {
     this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.id);
   }
   
+  unbind() {
+    this.gl.bindBuffer(this.gl.ARRAY_BUFFER, null);
+  }
+
   data(vertices, how_use) {
     this.gl.bufferData(this.gl.ARRAY_BUFFER, vertices, how_use);
   }
@@ -70,6 +74,10 @@ Mesh.EBO = class {
   
   bind() {
     this.gl.bindBuffer(this.gl.ELEMENT_ARRAY_BUFFER, this.id);
+  }
+
+  unbind() {
+    this.gl.bindBuffer(this.gl.ELEMENT_ARRAY_BUFFER, null);
   }
   
   data(indices, how_use) {
