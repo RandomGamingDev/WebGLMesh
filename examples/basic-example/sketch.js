@@ -14,7 +14,8 @@
  
 			var canvas, 
 			    gl, 
-			    buffer, 
+			    vertex_buffer, 
+					element_buffer,
 			    vertex_shader, fragment_shader, 
 			    currentProgram,
 			    vertex_position,
@@ -42,7 +43,8 @@
  
 				// Create Vertex buffer (2 triangles)
 				vertex_position = new Mesh.VAO(gl);
-				buffer = new Mesh.VBO(new Float32Array([-1.0, -1.0, 1.0, -1.0, -1.0, 1.0, 1.0, -1.0, 1.0, 1.0, -1.0, 1.0]), gl.STATIC_DRAW, gl);
+				vertex_buffer = new Mesh.VBO(new Float32Array([-1.0, -1.0, 1.0, -1.0, -1.0, 1.0, 1.0, 1.0]), gl.STATIC_DRAW, gl);
+				element_buffer = new Mesh.EBO(new Uint16Array([0, 1, 2, 1, 3, 2]), gl.STATIC_DRAW, gl);
  
 				// Create Program
 				currentProgram = createProgram(vertex_shader, fragment_shader);
@@ -129,10 +131,10 @@
 				gl.uniform2f(resolutionLocation, parameters.screenWidth, parameters.screenHeight);
  
 				// Render geometry
-				buffer.bind();
-				//gl.vertexAttribPointer( vertex_position, 2, gl.FLOAT, false, 0, 0 );
+				vertex_buffer.bind();
 				vertex_position.link_attrib(vertex_position, 2, gl.FLOAT, false, 0, 0);
+				element_buffer.bind();
 				vertex_position.enable();
-				gl.drawArrays(gl.TRIANGLES, 0, 6);
+				gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
 				vertex_position.disable();
 			}
