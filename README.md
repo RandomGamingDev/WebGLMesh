@@ -12,7 +12,7 @@ Currently the major classes are:
 
 Check the code and the WebGL documentation for the parameters needed.
 
-To use this library you can simply include https://cdn.jsdelivr.net/gh/RandomGamingDev/WebGL2Mesh/mesh.js in your HTML file! If you want to you can also just download the file and include it in your HTML file that way.
+To use this library you can simply include https://cdn.jsdelivr.net/gh/RandomGamingDev/WebGLMesh/mesh.js in your HTML file! If you want to you can also just download the file and include it in your HTML file that way.
 
 btw stuff updates so remember to specify a version/commit for your library if you want to use a link and don't want your code to automatically update to the newest version of the library
 
